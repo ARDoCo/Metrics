@@ -105,61 +105,12 @@
           <groupId>com.diffplug.spotless</groupId>
           <artifactId>spotless-maven-plugin</artifactId>
           <version>${spotless.version}</version>
-          <configuration>
-            <formats>
-              <format>
-                <includes>
-                  <include>*.md</include>
-                  <include>.gitignore</include>
-                </includes>
-                <trimTrailingWhitespace />
-                <endWithNewline />
-                <indent>
-                  <tabs>true</tabs>
-                  <spacesPerTab>4</spacesPerTab>
-                </indent>
-              </format>
-            </formats>
-            <!-- define a language-specific format -->
-            <java>
-              <eclipse>
-                <!--suppress UnresolvedMavenProperty -->
-                <file>${maven.multiModuleProjectDirectory}/formatter.xml</file>
-              </eclipse>
-              <removeUnusedImports />
-              <licenseHeader>
-                <!--suppress UnresolvedMavenProperty -->
-                <file>${maven.multiModuleProjectDirectory}/license-header</file>
-              </licenseHeader>
-              <importOrder>
-                <!--suppress UnresolvedMavenProperty -->
-                <file>${maven.multiModuleProjectDirectory}/spotless.importorder</file>
-              </importOrder>
-            </java>
-            <pom>
-              <sortPom>
-                <encoding>UTF-8</encoding>
-                <keepBlankLines>true</keepBlankLines>
-                <indentBlankLines>false</indentBlankLines>
-                <nrOfIndentSpace>2</nrOfIndentSpace>
-                <expandEmptyElements>false</expandEmptyElements>
-                <spaceBeforeCloseEmptyElement>true</spaceBeforeCloseEmptyElement>
-                <sortDependencies>groupId,artifactId</sortDependencies>
-                <sortDependencyExclusions>groupId,artifactId</sortDependencyExclusions>
-                <sortDependencyManagement>groupId,artifactId</sortDependencyManagement>
-                <sortPlugins>groupId,artifactId</sortPlugins>
-                <sortProperties>false</sortProperties>
-                <sortModules>true</sortModules>
-                <sortExecutions>true</sortExecutions>
-                <predefinedSortOrder>recommended_2008_06</predefinedSortOrder>
-              </sortPom>
-            </pom>
+          <configuration combine.self="append">
             <kotlin>
               <ktlint>
                 <editorConfigPath>.editorconfig</editorConfigPath>
               </ktlint>
             </kotlin>
-            <ratchetFrom>origin/main</ratchetFrom>
           </configuration>
         </plugin>
       </plugins>
