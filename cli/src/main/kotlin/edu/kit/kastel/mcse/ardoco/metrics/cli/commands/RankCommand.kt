@@ -98,10 +98,9 @@ class RankCommand : Callable<Int> {
         outputFile?.let {
             val outputFileObj = java.io.File(it)
             val oom =
-                com.fasterxml.jackson.databind
-                    .ObjectMapper()
+                ObjectMapper()
                     .enable(
-                        com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT
+                        SerializationFeature.INDENT_OUTPUT
                     ).registerKotlinModule()
             oom.writeValue(outputFileObj, result)
         }
