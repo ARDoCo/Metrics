@@ -78,7 +78,7 @@ class RankCommand : Callable<Int> {
                 return 1
             }
             if (biggerIsMoreSimilar == null) {
-                throw IllegalArgumentException("ranked relevances and bigger is more similar can only occur together")
+                throw IllegalArgumentException("Both 'ranked-relevance-list-directory' and 'bigger-is-more-similar' must be specified together.")
             }
             relevanceBasedInput =
                 RankMetricsCalculator.RelevanceBasedInput(
