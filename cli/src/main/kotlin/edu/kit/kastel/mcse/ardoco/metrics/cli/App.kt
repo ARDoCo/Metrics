@@ -16,10 +16,9 @@ fun main(args: Array<String>) {
         .execute(*args)
 }
 
-@picocli.CommandLine.Command(
+@CommandLine.Command(
     name = "ArDoCo Metrics",
     mixinStandardHelpOptions = true,
-    version = ["ArDoCo Metrics 1.0"],
     description = ["CLI for ArDoCo Metrics"]
 )
 class RootCommand

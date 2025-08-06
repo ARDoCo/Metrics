@@ -1,7 +1,5 @@
 package edu.kit.kastel.mcse.ardoco.metrics.cli.commands
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import edu.kit.kastel.mcse.ardoco.metrics.RankMetricsCalculator
 import picocli.CommandLine.Command
@@ -56,7 +54,7 @@ class RankCommand : Callable<Int> {
                 .filter { it.isNotBlank() }
                 .drop(if (fileHeader) 1 else 0)
                 .toSet()
-        var relevanceBasedInput: edu.kit.kastel.mcse.ardoco.metrics.RankMetricsCalculator.RelevanceBasedInput<Double>? = null
+        var relevanceBasedInput: RankMetricsCalculator.RelevanceBasedInput<Double>? = null
         if (rankedRelevanceListDirectory != null) {
             val rankedRelevanceListDirectoryFile = java.io.File(rankedRelevanceListDirectory!!)
             if (!rankedRelevanceListDirectoryFile.exists() || !rankedRelevanceListDirectoryFile.isDirectory) {
@@ -83,13 +81,13 @@ class RankCommand : Callable<Int> {
                 throw IllegalArgumentException("ranked relevances and bigger is more similar can only occur together")
             }
             relevanceBasedInput =
-                edu.kit.kastel.mcse.ardoco.metrics.RankMetricsCalculator.RelevanceBasedInput(
+                RankMetricsCalculator.RelevanceBasedInput(
                     rankedRelevances,
                     { it },
                     biggerIsMoreSimilar!!
                 )
         }
-        val rankMetrics = edu.kit.kastel.mcse.ardoco.metrics.RankMetricsCalculator.Instance
+        val rankMetrics = RankMetricsCalculator.Instance
         val result =
             rankMetrics.calculateMetrics(
                 rankedResults,

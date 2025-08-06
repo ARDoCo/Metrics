@@ -3,7 +3,6 @@ package edu.kit.kastel.mcse.ardoco.metrics.cli.commands
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import edu.kit.kastel.mcse.ardoco.metrics.ClassificationMetricsCalculator
 import picocli.CommandLine.Command
 import picocli.CommandLine.Option
 import java.util.concurrent.Callable
